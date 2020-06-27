@@ -10,12 +10,11 @@
     list-style: none;
 }
 
-html {
-    font-size: 62.5%;
-    margin: 0 auto;
-}
+
+
 
 /* header */
+
 
 header {
     display: grid;
@@ -59,8 +58,8 @@ nav h1 {
     font-size: 1.6em;
 }
 .empty-space {
-    flex-basis: 450px;
-    flex-shrink: 2;
+    flex-basis: 30rem;
+    flex-shrink: 10;
 }
 .fa-sign-in-alt{
     size: 7x;
@@ -301,4 +300,19 @@ footer {
 }
 .rights {
     font-size: 1.2em;
+}
+
+@media (min-width: 1400px) {
+    body {
+        display: flex;
+
+    };
+    .over1400 {
+        flex-basis: 1400;
+        flex-shrink: 0;
+    }
+    .empty1400 {
+        flex-grow: 2;
+        flex-shrink: 2;
+    }
 }
