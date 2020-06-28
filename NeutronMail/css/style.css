@@ -18,8 +18,8 @@
 
 header {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 800px 1fr 100px;
+    grid-template-rows: 1fr 160px 1fr 1fr;
+    grid-template-columns: 1fr 1200px 1fr 100px;
     /* background: url(../images/bgtop2.bmp);
     background-repeat: no-repeat;
     background-size: cover; */
@@ -32,17 +32,20 @@ nav {
     grid-column: 1/-1;
 }
 nav h1 {
-    font-size: 3em;
+    font-size: 2em;
     font-weight: bold;
     margin-top: 6rem;
+}
+nav h1 span {
+    color: purple;
 }
 
 .languages ul {
     display: flex;
-    align-content: space-between;
+    align-items: center;
 }
 .languages li {
-    font-size: 1.8em;
+    font-size: 1em;
     font-weight: bold;
 }
 .menu {
@@ -55,11 +58,7 @@ nav h1 {
 }
 
 .menu p {
-    font-size: 1.6em;
-}
-.empty-space {
-    flex-basis: 30rem;
-    flex-shrink: 10;
+    font-size: 1em;
 }
 .fa-sign-in-alt{
     size: 7x;
@@ -75,25 +74,49 @@ nav h1 {
     justify-content: center;
     padding-top: 5px;
 }
+.empty-space-nav {
+    flex-basis: 32rem;
+    flex-shrink: 10;
+}
+
+/* Landing page */
 
 .landing-page {
 
     grid-row: 3;
     grid-column: 2;
+    text-align: center;
 }
 
 .landing-page h2 {
-    font-size: 6em;
+    font-size: 3.7em;
 }
 
 .landing-page p {
-    font-size: 3.6em;
+    font-size: 2em;
+}
+.landing-page p span {
+    color:red
+}
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.buttons p{
-    font-size: 1.8em;
-    font-weight: bold
-    ;
+.buttons p {
+    font-size: 1em;
+    font-weight: bold;
+}
+.create-account {
+    background-color: blue;
+    color: white;
+    border-radius: 18px;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 5px;
 }
 
 .social-media-links {
@@ -125,50 +148,81 @@ nav h1 {
     flex: 2;
   }
 
+.empty-space-security {
+    height: 100px;
+} 
+
 .physical-security {
     align-items: flex-end;
 }
 
 .physical-security h2 {
-    font-size: 6em;
+    font-size: 3.8em;
 }
 
 .physical-security p {
-    font-size: 2.4em;
+    font-size: 1.4em;
+}
+
+.physical-security p span {
+    color: red;
 }
 
 /* Main */
-
-.swiss-privacy h2 {
-    font-size: 3em;
+.heading-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.swiss-privacy p {
-    font-size: 1.4em;
+.inner-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.swiss-privacy img {
+    width: 67px;
+}
+
+.swiss-privacy h2 {
+    font-size: 1.8em;
+    float: right;
 }
 
 .data-security {
+    font-size: 2.2em;
+}
+.swiss-privacy p {
+    font-size: 0.9em;
+}
+
+
+
+.double-encryption h2{
     font-size: 1.8em;
 }
 
-.double-encryption h2{
-    font-size: 3em;
-}
-
 .double-encryption p{
-    font-size: 1.4em;
+    font-size: 0.9em;
 }
 
 .automatic {
     font-size: 1.8em;
 }
+.double-encryption img {
+    width: 95px;
+}
+
 
 .anonymous-email h2{
-    font-size: 3em;
+    font-size: 1.8em;
 }
 
 .anonymous-email p {
-    font-size: 1.4em;
+    font-size: 0.9em;
+}
+.anonymous-email img {
+    width: 70px;
 }
 
 .protect {
@@ -177,10 +231,20 @@ nav h1 {
 
 
 .learn-more {
-    font-size: 1.6em;
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 10px;
+    padding-left: 30px;
+    width: 330px;
+    height: 50px;
+    font-size: 1em;
+    /* Will have to change this relative position with flexbox to make it reponsive */
+    position: relative;
+    left: 800px
 }
 /* reviews and portability */
-.second-background-div {
+
+/* .second-background-div {
     grid-column: 1/-1;
     grid-row: 2;
     background-image: url(../images/second_bg.png);
@@ -193,12 +257,12 @@ nav h1 {
     background-image: url(../images/laptop.png);
     background-size: contain;
     background-repeat: no-repeat;
-}
+} */
 
 .reviews-and-portability{
     display: grid;
     grid-template-columns: 20% 40% 1fr;
-    grid-template-rows: 200px 200px;
+    grid-template-rows: 200px 200px 200px;
 }
 
 .reviews {
@@ -207,22 +271,26 @@ nav h1 {
 }
 .reviews p {
     font-family: malaga;
-    font-size: 2.4em;
+    font-size: 1.4em;
 }
 .review span {
-    font-size: 1.6em;
+    font-size: 1em;
 }
 
 .portability {
     grid-row: 2;
     grid-column: 2;
+    text-align: right;
 
 }
 .portability h2 {
-    font-size: 3.6em;
+    font-size: 2.2em;
 }
 .portability p {
-    font-size: 1.6em;
+    font-size: 1em;
+}
+.portability img {
+    width: 200px;
 }
 
 
@@ -236,11 +304,14 @@ nav h1 {
 }
 
 .privacy h2 {
-    font-size: 3.6em;
+    font-size: 2.2em;
 }
 
 .privacy p {
-    font-size: 2.9em;
+    font-size: 1.8em;
+}
+.privacy-buttons {
+    display: flex;
 }
 
 /* Footer */
@@ -256,39 +327,41 @@ footer {
     grid-column: 1;
 }
 .sponsors p {
-    font-size: 1.4em;
+    font-size: 1em;
+    text-align: end;
 }
 .bottom-flex-container {
     grid-row: 3;
     grid-column: 1;
     display: flex;
+    justify-content: space-between;
 }
 
 .contact-info {
-    font-size: 1.4em;
+    font-size: 0.8em;
 }
 .company p{
-    font-size: 1.8em;
+    font-size: 0.8em;
 }
 .company li {
-    font-size: 1.4em;
+    font-size: 0.9;
 }
 .legal p{
-    font-size: 1.8em;
+    font-size: 1.1em;
 }
 .legal li {
-    font-size: 1.4em;
+    font-size: 0.9;
 }
 
 .neutron-mail p{
-    font-size: 1.8em;
+    font-size: 1.1em;
 }
 .neutron-mail li {
-    font-size: 1.4em;
+    font-size: 0.9;
 }
 
 .social-media {
-    grid-row: 4;
+    display: block;
 }
 
 .social-media ul {
@@ -298,9 +371,11 @@ footer {
 .social-media li {
     font-size: 1.2em;
 }
-.rights {
+/* .rights {
+    position: absolute;
+    bottom: 10px;
     font-size: 1.2em;
-}
+} */
 
 @media (min-width: 1400px) {
     body {

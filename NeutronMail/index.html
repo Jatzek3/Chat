@@ -14,7 +14,7 @@
     <header>
         <nav>
             <div class="logo-and-languages">
-                <h1>neutronMail</h1>
+                <h1>neutron<span>Mail</span></h1>
                 <div class="languages">
                     <ul>
                         <li>English</li>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="menu">
-                <p class="empty-space"></p>
+                <p class="empty-space-nav"></p>
                 <p>About</p>
                 <p>Security</p>
                 <p>Blog</p>
@@ -39,18 +39,18 @@
         </nav>
     <section class='landing-page'>
         <h2>Secure Email Communication</h2>
-        <p>Based In Somewhere</p>
+        <p>Based In <span>Somewhere</span></p>
         <div class="buttons">
-            <p>Create Account</p>
-            <p>Apple</p>
-            <p>Google</p>
+            <p class="create-account">Create Account</p>
+            <i class="fab fa-apple"></i>
+            <i class="fab fa-google-play"></i>
         </div>
     </section>
     <aside class="social-media-links">
         <div>
-            <p>GoogleIcon</p>
-            <p>FacebookIcon</p>
-            <p>TwitterIcon</p>
+            <i class="fab fa-google-plus-g"></i>
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-twitter-square"></i>
         </div>
     </aside>
     </header>
@@ -58,16 +58,26 @@
         <section class="profits">
             <div class="row">
                     <div class="swiss-privacy column">
-                        <h2>Swiss Privacy</h2>
-                        <p class="data-security">Data Security and Neutrality</p>
+                        <div class="heading-container">
+                            <img src="images/swiss-privacy.png" alt="shield">
+                            <div class="inner-container">
+                            <h2>Swiss Privacy</h2>
+                            <p class="data-security">Data Security and Neutrality</p>
+                            </div>
+                        </div>
                         <p>NatronMail is incorporated in Somewhere all our serv-<br>
                             ers are located in Switzerland. This means all user data is<br>
                             protected by strict Swiss privacy laws
                         </p>
                     </div>
                     <div class="double-encryption column">
-                        <h2>Double Encryption</h2>
-                        <p class="Automatic">Automatic Email Security</p>
+                        <div class="heading-container">
+                        <img src="images/double-encryption.png" alt="lock">
+                            <div class="inner-container">
+                                <h2>Double Encryption</h2>
+                                <p class="Automatic">Automatic Email Security</p>
+                            </div>
+                        </div>
                         <p>All emails are secured automatically with end-to-end <br>
                             encryption. This means even we cannot decrypt and read<br>
                             your emails. As a result, your encrypted emails cannot<br>
@@ -75,8 +85,13 @@
                         </p>
                     </div>
                     <div class="anonymous-email column">
-                        <h2>Anonymous Email</h2>
-                        <p class="protect">Protect Your Privacy</p>
+                        <div class="heading-container">
+                            <img src="images/anonymous-email.png" alt="key">
+                            <div class="inner-container">
+                                <h2>Anonymous Email</h2>
+                                <p class="protect">Protect Your Privacy</p>
+                            </div>
+                        </div>
                         <p>No personal information is required to create your secure <br>
                             email account. By default, we do not keep any IP logs which <br>
                             can be linked to your anonymous email account. Your privacy <br>
@@ -84,6 +99,7 @@
                         </p>
                     </div>
             </div>
+            <div class="empty-space-security row"></div>
             <div class="row">
                 <div class="physical-security double-column">
                     <h2>Physical Security</h2>
@@ -110,8 +126,8 @@
                     within our secure email service is optimized to help you better
                     read, organize, and send email.
                 </p>
-                <p>download in appstor icon</p>
-                <p>get on google play icom</p>     
+                <img src="images/App-store.png" alt="Apple">
+                <img src="images/google-play-badge.png" alt="google-play-badge">
             </div>
             <div class="background-div"></div>
             <div class="second-background-div"></div>
@@ -119,8 +135,10 @@
         <div class="privacy">
             <h2>Privacy is a fundamental human right.</h2>
             <p>Your suppport helps us to protect privacy world-wide.</p>
-            <p>Upgrade to Paid Plan</p>
-            <p>Donate</p>
+            <div class="privacy-buttons">
+                <p>Upgrade to Paid Plan</p>
+                <p>Donate</p>
+            </div>
         </div>
     </main>
     <footer>
@@ -133,8 +151,9 @@
                 <p>General: contact@neutronmail.ch</p>
                 <p>Media: media@neutronmail.ch</p>
                 <p>Security: security@neutronmail.ch</p>
-    
-                <p>For support inquiries, please visit
+                <br>
+                <br>
+                <p>For support inquiries, please visit<br>
                     neutronmail.com/support
                 </p>
             </div>
@@ -172,17 +191,17 @@
                 </ul>
             </div>
         </div>
-        <div class="social-media">
-            <ul>
-                <li>Facebook</li>
-                <li>Twitter</li>
-                <li>Google+</li>
-                <li>Feedback Forum</li>
-                <li>Redkit</li>
-            </ul>
-        </div>
-        <p class="rights"> @ 2017 Neutron Technologies AG. All Rights Reserverd</p>
     </footer>
+    <div class="social-media">
+        <ul>
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Google+</li>
+            <li>Feedback Forum</li>
+            <li>Redkit</li>
+        </ul>
+    </div>
+    <p class="rights"> @ 2017 Neutron Technologies AG. All Rights Reserverd</p>
     </div>
     <div class="empty1400"></div>
 </body>
