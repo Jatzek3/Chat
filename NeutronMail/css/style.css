@@ -1,7 +1,17 @@
 @font-face{
-    src: url(../fonts/Malaga-OT-Reg-Italic.ttf);
+    src: url(../assets/fonts/Malaga-OT-Reg-Italic.ttf);
     font-family: malaga;
 }
+@font-face{
+    src: url(../assets/fonts/TitilliumWeb-Regular.ttf);
+    font-family: 'Titillium Web';
+}
+@font-face{
+    src: url(../assets/fonts/TitilliumWeb-Bold.ttf);
+    font-family: 'Titillium Web';
+    font-weight: bold;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -18,14 +28,17 @@
 
 header {
     display: grid;
-    grid-template-rows: 1fr 160px 1fr 1fr;
-    grid-template-columns: 1fr 1200px 1fr 100px;
+    grid-template-rows: 140px 160px 1fr 15rem;
+    grid-template-columns: 1fr 1200px 1fr;
+
     /* background: url(../images/bgtop2.bmp);
     background-repeat: no-repeat;
     background-size: cover; */
     max-width: 1400px;
 }
+
 nav {
+    position: relative;
     display: flex;
     justify-content: space-between;
     grid-row: 1;
@@ -51,10 +64,8 @@ nav h1 span {
 .menu {
     display: flex;
     width:100%;
-    margin-top: 6rem;
+    margin-top: 6.4rem;
     justify-content: space-between;
-    position: relative;
-    top:20px;
 }
 
 .menu p {
@@ -62,6 +73,8 @@ nav h1 span {
 }
 .fa-sign-in-alt{
     size: 7x;
+    position: relative;
+    top: 0.3rem;
 }
 .menu :last-child {
     /* Add gradient and color */
@@ -76,7 +89,7 @@ nav h1 span {
 }
 .empty-space-nav {
     flex-basis: 32rem;
-    flex-shrink: 10;
+    flex-shrink: 1000;
 }
 
 /* Landing page */
@@ -93,7 +106,7 @@ nav h1 span {
 }
 
 .landing-page p {
-    font-size: 2em;
+    font-size: 2.3em;
 }
 .landing-page p span {
     color:red
@@ -102,26 +115,45 @@ nav h1 span {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    top: 3rem;
 }
 
 .buttons p {
     font-size: 1em;
     font-weight: bold;
 }
+.buttons i {
+    background-color: blue;
+    color: white;
+    border-radius: 18px;
+    height: 3rem;
+    width: 3rem;    
+    text-align: center;
+    justify-content: center;
+    padding-top: 0.7rem;
+    margin-left: 1.5rem;
+}
 .create-account {
     background-color: blue;
     color: white;
     border-radius: 18px;
-    width: 200px;
-    height: 40px;
+    width: 15rem;
+    height: 4em;
     text-align: center;
     justify-content: center;
-    padding-top: 5px;
+    padding-top: 0.5rem;
 }
 
 .social-media-links {
-    grid-row: 3;
-    grid-column: 4;
+    position: absolute;
+    top: 20rem;
+    right: 0rem;
+    display: flex;
+    flex-direction: column;
+}
+.social-media-links i {
+    margin: 0.8rem;
 }
 
 
@@ -179,6 +211,9 @@ nav h1 span {
     display: flex;
     flex-direction: column;
 }
+.empty-space-profits {
+    height: 8rem;
+}
 
 .swiss-privacy img {
     width: 67px;
@@ -233,15 +268,21 @@ nav h1 span {
 .learn-more {
     border-radius: 25px;
     border: 2px solid black;
-    padding: 10px;
+    padding: 0.6rem;
     padding-left: 30px;
     width: 330px;
     height: 50px;
     font-size: 1em;
     /* Will have to change this relative position with flexbox to make it reponsive */
     position: relative;
-    left: 800px
+    left: 43rem;
 }
+
+.reviewers-image{
+    position:absolute;
+    left: 0rem
+}
+
 /* reviews and portability */
 
 /* .second-background-div {
@@ -258,11 +299,13 @@ nav h1 span {
     background-size: contain;
     background-repeat: no-repeat;
 } */
-
+.empty-space-reviews{
+    height: 8rem;
+}
 .reviews-and-portability{
     display: grid;
     grid-template-columns: 20% 40% 1fr;
-    grid-template-rows: 200px 200px 200px;
+    grid-template-rows: 15rem 15rem 200px;
 }
 
 .reviews {
@@ -281,7 +324,6 @@ nav h1 span {
     grid-row: 2;
     grid-column: 2;
     text-align: right;
-
 }
 .portability h2 {
     font-size: 2.2em;
@@ -301,6 +343,7 @@ nav h1 span {
     display:flex;
     align-items: center;
     flex-direction: column;
+    border-bottom: solid 1px black;
 }
 
 .privacy h2 {
@@ -312,6 +355,28 @@ nav h1 span {
 }
 .privacy-buttons {
     display: flex;
+}
+.privacy-buttons :first-child {
+    background-color: blue;
+    color: white;
+    border-radius: 18px;
+    height: 3rem;
+    width: 25rem;    
+    text-align: center;
+    justify-content: center;
+    padding-top: 0.7rem;
+    margin-left: 1.5rem;
+}
+.privacy-buttons :last-child {
+    background-color: blue;
+    color: white;
+    border-radius: 18px;
+    height: 3rem;
+    width: 10rem;    
+    text-align: center;
+    justify-content: center;
+    padding-top: 0.7rem;
+    margin-left: 1.5rem;
 }
 
 /* Footer */
@@ -376,6 +441,14 @@ footer {
     bottom: 10px;
     font-size: 1.2em;
 } */
+@media (min-width: 800px) and (max-width: 1200px){
+    .empty-space-nav {
+        flex-basis: 2rem;
+    }
+    menu p {
+        flex-shrink: 10;
+    }
+}
 
 @media (min-width: 1400px) {
     body {
