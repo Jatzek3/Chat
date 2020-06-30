@@ -65,6 +65,13 @@ nav h1 span {
 .languages li {
     font-size: 1em;
     font-weight: bold;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    border-right: solid 1px black;
+    transform: skewX(-10deg);
+}
+.languages li:last-child {
+    border: none;
 }
 
 .languages li:hover {
@@ -321,7 +328,6 @@ nav h1 span {
     height: 50px;
     font-size: 1em;
     background-color: white;
-    /* Will have to change this relative position with flexbox to make it reponsive */
     position: relative;
     left: 41rem;
     top: -1.5rem;
@@ -355,13 +361,15 @@ nav h1 span {
 
 .reviews-and-portability{
     display: grid;
-    grid-template-columns: 20% 40% 1fr;
-    grid-template-rows: 15rem 15rem 200px;
+    grid-template-columns: 1fr 20% 20% 20% 1fr;
+    grid-template-rows: 15rem 15rem 8rem;
+    border-bottom: solid 1px black;
+
 }
 
 .reviews {
     grid-row: 1;
-    grid-column: 2;
+    grid-column: 2/4;
 }
 
 .reviews p {
@@ -375,7 +383,7 @@ nav h1 span {
 
 .portability {
     grid-row: 2;
-    grid-column: 2;
+    grid-column: 3/5;
     text-align: right;
 }
 
@@ -393,9 +401,11 @@ nav h1 span {
 
 
 
+
 /* privacy */
 
 .privacy {
+    padding-top: 4rem;
     display:flex;
     align-items: center;
     flex-direction: column;
@@ -410,6 +420,7 @@ nav h1 span {
     font-size: 1.8em;
 }
 
+
 .privacy-buttons {
     display: flex;
 }
@@ -419,11 +430,13 @@ nav h1 span {
     color: white;
     border-radius: 18px;
     height: 3rem;
-    width: 25rem;    
+    width: 15rem;    
     text-align: center;
     justify-content: center;
     padding-top: 0.7rem;
+    margin-top: 2rem;
     margin-left: 1.5rem;
+    font-size: 1.2em;
 }
 
 .privacy-buttons :last-child {
@@ -436,7 +449,9 @@ nav h1 span {
     justify-content: center;
     padding-top: 0.7rem;
     margin-left: 1.5rem;
+    margin-top: 2rem;
     margin-bottom: 7rem;
+    font-size: 1.2em;
 }
 
 /* Footer */
@@ -445,6 +460,7 @@ footer {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 100px 100px 100px 100px;
+    border-right: solid 1px black;
 }
 
 .sponsors {
@@ -466,6 +482,9 @@ footer {
 
 .contact-info {
     font-size: 0.8em;
+}
+.contact-info a {
+    text-decoration: none;
 }
 
 .company p{
@@ -505,6 +524,11 @@ footer {
     padding-right: 1rem;
     padding-left: 1rem;
     border-right: solid 1px black;
+    transform: skewX(-10deg);
+}
+
+.social-media li:last-child {
+    border: none;
 }
 
 /* .rights {
@@ -534,40 +558,63 @@ footer {
         flex-basis: 2rem;
         
     }
+    .learn-more {
+        left: 20rem;
+    }
+    .physical-security h2 {
+        font-size: 3rem;
+    }
 }
-    /* .header {
-        display: grid;
-        grid-template-rows: 140px 160px 1fr 15rem;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
 
-    .row{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-} */
 
 @media (max-width: 800px){
     
-
+    header {
+        display: grid;
+        grid-template-rows: 140px 160px 1fr 1rem;
+        grid-template-columns: 1fr;
+    }
+    .social-media-links {
+        display: none;
+    }
     .row{
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-
+    .swiss-privacy {
+        border:none;
+        padding: 0px;
+    }
+    .double-encryption {
+        border: none;
+        padding: 0px;
+    }
+    .anonymous-email {
+        border: none;
+        padding: 0px;
+    }
+    .reviewers-image {
+        display: none;
+    }
     .bottom-flex-container {
         flex-direction: column;
         padding-left: 3rem;
+    }
+    .physical-security {
+        border: none;
+    }
+    .learn-more {
+        left: auto;
     }
 
     .under-footer {
         display: none;
     }
-}
-
-@media (max-width: 540px){
-
-
+    .reviews p{
+        font-size: 1rem;
+    }
+    .portability h2 {
+        font-size: 1.5em;
+    }
 }
