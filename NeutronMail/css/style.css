@@ -1,11 +1,15 @@
+/* Settings */
+
 @font-face{
     src: url(../assets/fonts/Malaga-OT-Reg-Italic.ttf);
     font-family: malaga;
 }
+
 @font-face{
     src: url(../assets/fonts/TitilliumWeb-Regular.ttf);
     font-family: 'Titillium Web';
 }
+
 @font-face{
     src: url(../assets/fonts/TitilliumWeb-Bold.ttf);
     font-family: 'Titillium Web';
@@ -19,7 +23,6 @@
     font-family: 'Titillium Web', sans-serif;
     list-style: none;
 }
-
 
 
 
@@ -44,11 +47,13 @@ nav {
     grid-row: 1;
     grid-column: 1/-1;
 }
+
 nav h1 {
     font-size: 2em;
     font-weight: bold;
     margin-top: 6rem;
 }
+
 nav h1 span {
     color: purple;
 }
@@ -61,6 +66,11 @@ nav h1 span {
     font-size: 1em;
     font-weight: bold;
 }
+
+.languages li:hover {
+    border-bottom: solid 1px purple;
+}
+
 .menu {
     display: flex;
     width:100%;
@@ -71,11 +81,16 @@ nav h1 span {
 .menu p {
     font-size: 1em;
 }
+.menu p:hover {
+    font-size: 1.3em;
+}
+
 .fa-sign-in-alt{
     size: 7x;
     position: relative;
     top: 0.3rem;
 }
+
 .menu :last-child {
     /* Add gradient and color */
     background-color: blue;
@@ -108,9 +123,11 @@ nav h1 span {
 .landing-page p {
     font-size: 2.3em;
 }
+
 .landing-page p span {
     color:red
 }
+
 .buttons {
     display: flex;
     align-items: center;
@@ -123,6 +140,7 @@ nav h1 span {
     font-size: 1em;
     font-weight: bold;
 }
+
 .buttons i {
     background-color: blue;
     color: white;
@@ -134,6 +152,7 @@ nav h1 span {
     padding-top: 0.7rem;
     margin-left: 1.5rem;
 }
+
 .create-account {
     background-color: blue;
     color: white;
@@ -152,9 +171,11 @@ nav h1 span {
     display: flex;
     flex-direction: column;
 }
+
 .social-media-links i {
     margin: 0.8rem;
 }
+
 
 
 /* Profits */
@@ -178,7 +199,7 @@ nav h1 span {
     flex-direction: column;
     flex-basis: 100%;
     flex: 2;
-  }
+}
 
 .empty-space-security {
     height: 100px;
@@ -200,7 +221,11 @@ nav h1 span {
     color: red;
 }
 
+
+
+
 /* Main */
+
 .heading-container {
     display: flex;
     flex-direction: row;
@@ -211,6 +236,9 @@ nav h1 span {
     display: flex;
     flex-direction: column;
 }
+
+
+
 .empty-space-profits {
     height: 8rem;
 }
@@ -249,6 +277,7 @@ nav h1 span {
 }
 
 
+
 .anonymous-email h2{
     font-size: 1.8em;
 }
@@ -263,6 +292,7 @@ nav h1 span {
 .protect {
     font-size: 1.8em;
 }
+
 
 
 .learn-more {
@@ -299,9 +329,11 @@ nav h1 span {
     background-size: contain;
     background-repeat: no-repeat;
 } */
+
 .empty-space-reviews{
     height: 8rem;
 }
+
 .reviews-and-portability{
     display: grid;
     grid-template-columns: 20% 40% 1fr;
@@ -312,10 +344,12 @@ nav h1 span {
     grid-row: 1;
     grid-column: 2;
 }
+
 .reviews p {
     font-family: malaga;
     font-size: 1.4em;
 }
+
 .review span {
     font-size: 1em;
 }
@@ -325,12 +359,15 @@ nav h1 span {
     grid-column: 2;
     text-align: right;
 }
+
 .portability h2 {
     font-size: 2.2em;
 }
+
 .portability p {
     font-size: 1em;
 }
+
 .portability img {
     width: 200px;
 }
@@ -353,9 +390,11 @@ nav h1 span {
 .privacy p {
     font-size: 1.8em;
 }
+
 .privacy-buttons {
     display: flex;
 }
+
 .privacy-buttons :first-child {
     background-color: blue;
     color: white;
@@ -367,6 +406,7 @@ nav h1 span {
     padding-top: 0.7rem;
     margin-left: 1.5rem;
 }
+
 .privacy-buttons :last-child {
     background-color: blue;
     color: white;
@@ -377,6 +417,7 @@ nav h1 span {
     justify-content: center;
     padding-top: 0.7rem;
     margin-left: 1.5rem;
+    margin-bottom: 7rem;
 }
 
 /* Footer */
@@ -391,10 +432,12 @@ footer {
     grid-row: 1;
     grid-column: 1;
 }
+
 .sponsors p {
     font-size: 1em;
     text-align: end;
 }
+
 .bottom-flex-container {
     grid-row: 3;
     grid-column: 1;
@@ -405,15 +448,19 @@ footer {
 .contact-info {
     font-size: 0.8em;
 }
+
 .company p{
     font-size: 0.8em;
 }
+
 .company li {
     font-size: 0.9;
 }
+
 .legal p{
     font-size: 1.1em;
 }
+
 .legal li {
     font-size: 0.9;
 }
@@ -421,6 +468,7 @@ footer {
 .neutron-mail p{
     font-size: 1.1em;
 }
+
 .neutron-mail li {
     font-size: 0.9;
 }
@@ -435,26 +483,22 @@ footer {
 
 .social-media li {
     font-size: 1.2em;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-right: solid 1px black;
 }
+
 /* .rights {
     position: absolute;
     bottom: 10px;
     font-size: 1.2em;
 } */
-@media (min-width: 800px) and (max-width: 1200px){
-    .empty-space-nav {
-        flex-basis: 2rem;
-    }
-    menu p {
-        flex-shrink: 10;
-    }
-}
 
 @media (min-width: 1400px) {
     body {
         display: flex;
 
-    };
+    }
     .over1400 {
         flex-basis: 1400;
         flex-shrink: 0;
@@ -463,4 +507,48 @@ footer {
         flex-grow: 2;
         flex-shrink: 2;
     }
+}
+
+@media (max-width: 1200px){
+
+    .empty-space-nav {
+        flex-basis: 2rem;
+        
+    }
+}
+    /* .header {
+        display: grid;
+        grid-template-rows: 140px 160px 1fr 15rem;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .row{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+} */
+
+@media (max-width: 800px){
+    
+
+    .row{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bottom-flex-container {
+        flex-direction: column;
+        padding-left: 3rem;
+    }
+
+    .under-footer {
+        display: none;
+    }
+}
+
+@media (max-width: 540px){
+
+
 }
