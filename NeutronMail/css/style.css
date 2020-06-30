@@ -32,7 +32,7 @@
 header {
     display: grid;
     grid-template-rows: 140px 160px 1fr 15rem;
-    grid-template-columns: 1fr 1200px 1fr;
+    grid-template-columns: 1fr;
 
     /* background: url(../images/bgtop2.bmp);
     background-repeat: no-repeat;
@@ -103,8 +103,7 @@ nav h1 span {
     padding-top: 5px;
 }
 .empty-space-nav {
-    flex-basis: 32rem;
-    flex-shrink: 1000;
+    flex-basis: 20rem;
 }
 
 /* Landing page */
@@ -112,7 +111,7 @@ nav h1 span {
 .landing-page {
 
     grid-row: 3;
-    grid-column: 2;
+    grid-column: 1/-1;
     text-align: center;
 }
 
@@ -201,26 +200,6 @@ nav h1 span {
     flex: 2;
 }
 
-.empty-space-security {
-    height: 100px;
-} 
-
-.physical-security {
-    align-items: flex-end;
-}
-
-.physical-security h2 {
-    font-size: 3.8em;
-}
-
-.physical-security p {
-    font-size: 1.4em;
-}
-
-.physical-security p span {
-    color: red;
-}
-
 
 
 
@@ -239,9 +218,16 @@ nav h1 span {
 
 
 
+.swiss-privacy {
+    padding-right: 3rem;
+    border-right: solid 1px black;
+}
+
+
 .empty-space-profits {
     height: 8rem;
 }
+
 
 .swiss-privacy img {
     width: 67px;
@@ -261,6 +247,12 @@ nav h1 span {
 
 
 
+.double-encryption {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    border-right: solid 1px black;
+}
+
 .double-encryption h2{
     font-size: 1.8em;
 }
@@ -277,7 +269,9 @@ nav h1 span {
 }
 
 
-
+.anonymous-email {
+    padding-left: 3rem;
+}
 .anonymous-email h2{
     font-size: 1.8em;
 }
@@ -295,6 +289,29 @@ nav h1 span {
 
 
 
+.physical-security {
+    padding-right: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border-right: solid 1px black;
+    border-bottom: solid 1px black;
+    align-items: flex-end;
+
+}
+
+.physical-security h2 {
+    font-size: 3.8em;
+}
+
+.physical-security p {
+    font-size: 1.4em;
+}
+
+.physical-security p span {
+    color: red;
+}
+
+
 .learn-more {
     border-radius: 25px;
     border: 2px solid black;
@@ -303,9 +320,11 @@ nav h1 span {
     width: 330px;
     height: 50px;
     font-size: 1em;
+    background-color: white;
     /* Will have to change this relative position with flexbox to make it reponsive */
     position: relative;
-    left: 43rem;
+    left: 41rem;
+    top: -1.5rem;
 }
 
 .reviewers-image{
