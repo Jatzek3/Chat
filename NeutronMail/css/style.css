@@ -29,16 +29,21 @@
 /* header */
 
 
+
 header {
     display: grid;
     grid-template-rows: 140px 160px 1fr 15rem;
     grid-template-columns: 1fr;
 
-    /* background: url(../images/bgtop2.bmp);
+    background:linear-gradient(rgba(255,255,255,1.0), rgba(255,255,255,0.1)), url(../assets/images/bgtop2.png);
     background-repeat: no-repeat;
-    background-size: cover; */
+    background-size: contain;
     max-width: 1400px;
-}
+    background-position: 0cm 8rem;
+} 
+
+    
+
 
 nav {
     position: relative;
@@ -364,6 +369,10 @@ nav h1 span {
     grid-template-columns: 0.8fr 20% 20% 20% 2.2fr;
     grid-template-rows: 15rem 15rem 8rem;
     border-bottom: solid 1px black;
+    background-image: url(../assets/images/laptop.png);
+    background-repeat: no-repeat;
+    background-position: 30rem;
+    background-size: 40%;
 
 }
 
@@ -398,6 +407,7 @@ nav h1 span {
 .portability img {
     width: 200px;
 }
+
 
 
 
@@ -528,14 +538,15 @@ footer {
 .neutron-mail {
     padding-right: 1rem;
 }
-.neutron-mail ul {
-    text-align: right;
-}
+
 
 .neutron-mail p{
     font-size: 1.1em;
     text-align: right;
     font-weight: bold;
+}
+.neutron-mail ul {
+    text-align: right;
 }
 
 .neutron-mail li {
@@ -564,7 +575,11 @@ footer {
 
 .rights {
     font-size: 0.6em;
-} 
+}
+
+.under-footer {
+    display: block;
+ }
 
 @media (min-width: 1400px) {
     body {
@@ -646,14 +661,43 @@ footer {
     .sponsors img {
         display: none;
     }
+    
 
-    .under-footer {
-        display: none;
-    }
     .reviews p{
         font-size: 1rem;
     }
     .portability h2 {
         font-size: 1.5em;
+    }
+    .company ul{
+        text-align: center;
+    }
+    .company {
+        padding-bottom: 2rem;
+    }
+    .company p{
+        text-align: center;
+    }
+    .legal {
+        padding-bottom: 2rem;
+    }
+    .legal ul {
+        text-align: center;
+    }
+
+    .legal p{
+        text-align: center;
+    }
+    .neutron-mail {
+        padding-bottom: 2rem;
+    }
+    .neutron-mail p{
+        text-align: center;
+    }
+    .neutron-mail ul {
+        text-align: center;
+    }
+    .under-footer {
+        display: none;
     }
 }
