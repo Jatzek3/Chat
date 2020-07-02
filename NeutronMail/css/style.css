@@ -28,8 +28,6 @@
 
 /* header */
 
-
-
 header {
     display: grid;
     grid-template-rows: 140px 160px 1fr 15rem;
@@ -41,9 +39,6 @@ header {
     max-width: 1400px;
     background-position: 0cm 8rem;
 } 
-
-    
-
 
 nav {
     position: relative;
@@ -60,7 +55,7 @@ nav h1 {
 }
 
 nav h1 span {
-    color: purple;
+    color: #5B4295;
 }
 
 .languages ul {
@@ -105,7 +100,7 @@ nav h1 span {
 
 .menu :last-child {
     /* Add gradient and color */
-    background-color: blue;
+    background-color: #616DC3;
     color: white;
     border-radius: 18px;
     width: 91px;
@@ -129,6 +124,7 @@ nav h1 span {
 
 .landing-page h2 {
     font-size: 3.7em;
+
 }
 
 .landing-page p {
@@ -153,26 +149,27 @@ nav h1 span {
 }
 
 .buttons i {
-    background-color: blue;
+    background-color: #794F81;
     color: white;
-    border-radius: 18px;
+    border-radius: 25px;
     height: 3rem;
     width: 3rem;    
     text-align: center;
     justify-content: center;
-    padding-top: 0.7rem;
+    padding-top: 1rem;
     margin-left: 1.5rem;
 }
 
 .create-account {
-    background-color: blue;
+    background-color: #61497B;
     color: white;
-    border-radius: 18px;
+    border-radius: 25px;
     width: 15rem;
-    height: 4em;
+    height: 3em;
     text-align: center;
     justify-content: center;
     padding-top: 0.5rem;
+    font-weight: bold;
 }
 
 .social-media-links {
@@ -343,25 +340,15 @@ nav h1 span {
     left: 0rem
 }
 
-/* reviews and portability */
-
-/* .second-background-div {
-    grid-column: 1/-1;
-    grid-row: 2;
-    background-image: url(../images/second_bg.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.background-div {
-    grid-column: 2;
-    grid-row: 1/-1;
-    background-image: url(../images/laptop.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-} */
 
 .empty-space-reviews{
     height: 8rem;
+}
+
+main {
+    background-image: url(../assets/images/second_bg.png);
+    background-repeat: no-repeat;
+    background-position: 0cm 54rem;
 }
 
 .reviews-and-portability{
@@ -436,9 +423,9 @@ nav h1 span {
 }
 
 .privacy-buttons :first-child {
-    background-color: blue;
+    background-color: #603F75;
     color: white;
-    border-radius: 18px;
+    border-radius: 25px;
     height: 3rem;
     width: 15rem;    
     text-align: center;
@@ -447,22 +434,24 @@ nav h1 span {
     margin-top: 2rem;
     margin-left: 1.5rem;
     margin-bottom: 5rem;
-    font-size: 1.2em;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 .privacy-buttons :last-child {
-    background-color: blue;
+    background-color: #548BE8;
     color: white;
-    border-radius: 18px;
+    border-radius: 25px;
     height: 3rem;
     width: 10rem;    
     text-align: center;
     justify-content: center;
     padding-top: 0.7rem;
-    margin-left: 1.5rem;
+    margin-left: 2.5rem;
     margin-top: 2rem;
     margin-bottom: 5rem;
-    font-size: 1.2em;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 /* Footer */
@@ -660,6 +649,9 @@ footer {
     }
     .sponsors img {
         display: none;
+    }
+    .reviews-and-portability {
+        background-position: 15rem;
     }
     
 
