@@ -8,11 +8,11 @@ const Input = ({/* setMessage, sendMessage, message */}) => (
       className="input"
       type="text"
       placeholder="Type a message..."
-      value= "Message" /* {message} */
-      onChange={ console.log('event.handler')/*({ target: { value } }) => setMessage(value)*/}
-      onKeyPress={console.log('event handler')/*event => event.key === 'Enter' ? sendMessage(event) : null */}
+      value= {console.log('messgae')} /* {message} ,-have to be handledto take input*/ 
+      onChange={ console.log('Input onChange')/*({ target: { value } }) => setMessage(value)*/}
+      onKeyPress={console.log('Input onKeypress')/*event => event.key === 'Enter' ? sendMessage(event) : null */}
     />
-    <button className="sendButton" onClick={console.log('event handler')/*e => sendMessage(e)*/}>Send</button>
+    <button className="sendButton" onClick={console.log('Input send')/*e => sendMessage(e)*/}>Send</button>
   </form>
 )
 
