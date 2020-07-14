@@ -1,60 +1,44 @@
-import React, {Component, useState, useEffect } from "react";
-import queryString from 'query-string';
-import io from "socket.io-client";
-
-// import TextContainer from '../TextContainer/TextContainer';
-// import Messages from '../Messages/Messages';
-// import InfoBar from '../InfoBar/InfoBar';
-// import Input from '../Input/Input';
+import React, { Component } from "react";
 
 import './Chat.css';
+import Messages from '../Messages/Messages';
+import Input from '../Input/Input';
 
+class Chat extends Component {
+  constructor () {
+    super()
+    this.state = {}
+  }
 
+  componentDidMount() {
+  }
+  componentWillUnmount() {
+    // If you do componentDidMount() don’t forget to unsubscribe in componentWillUnmount().
+  }
+  shouldComponentUpdate() {
 
-const Chat = ({ location }) => {
-  const [name, setName] = useState('');
-  // const [room, setRoom] = useState('');
-  //  const ENDPOINT = 'ws://st-chat.shas.tel';
-    const ENDPOINT = 'ws://chat.shas.tel';
+// By default it returns true. 
+// If you are sure that the component doesn't need to render after state or props are updated, you can return false value.
 
-  useEffect(() => {
-    console.log('this fires1')
-    const { name } = queryString.parse(location.search);
+// It is a great place to improve performance as it allows you to prevent a re-render if component receives new prop.
 
-    const socket = new WebSocket(ENDPOINT);
-
-    // Connection opened
-    socket.addEventListener('open', function (event) {
-        socket.send('Hello Server!');
-    });
-
-    // Listen for messages
-    socket.addEventListener('message', function (event) {
-        console.log('Message from server ', event.data);
-    });
-
-
-
-
-    // setRoom(room);
-    setName(name)
-    console.log('this fires2')
-
-
-  }, [ENDPOINT, location.search]);
-  
-
-    
-
-
-    return (
-      <div className="outerContainer">
-        <div className="container">
-          <h1>This is it</h1>
-        </div>
-      </div>
-    )
+// This method only exists as a performance optimization.
+// Do not rely on it to “prevent” a rendering, as this can lead to bugs.
+// Consider using the built-in PureComponent instead of writing shouldComponentUpdate() by hand.
+// PureComponent performs a shallow comparison of props and state, and reduces the chance that you’ll skip a necessary update.
   }
 
 
-export default Chat;
+  render () {
+    return (
+        <div className="outerContainer">
+          <div className="container">
+              <h1>{this.state.name}</h1>
+                <Messages />
+                <Input />
+          </div>
+        </div>
+      )
+    }
+}
+export default Chat
