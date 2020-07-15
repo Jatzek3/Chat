@@ -1,6 +1,7 @@
 import { FETCH_MESSAGES, SEND_MESSAGE,SET_NAME, RECEIVE_MESSAGE } from './types' 
 
 export function connectToWS(arrayOfMessages){
+    console.log('connectToWS fires', arrayOfMessages)
     return {
         type: FETCH_MESSAGES,
         payload: arrayOfMessages

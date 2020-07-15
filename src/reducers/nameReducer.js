@@ -1,8 +1,6 @@
 import { SET_NAME  } from '../actions/types' 
 
-const initialState = {
-    name: ''
-}
+const initialState = 'Jacek';
 
 export default  function (state = initialState, action){
     switch(action.type){
@@ -13,6 +11,7 @@ export default  function (state = initialState, action){
             }
         default:
             return state;
+            
     }
 
 }

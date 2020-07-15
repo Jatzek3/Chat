@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { FETCH_MESSAGES, SEND_MESSAGE,SET_NAME, RECEIVE_MESSAGE } from '../../actions/types'
 
 import './Chat.css';
 
@@ -11,10 +12,15 @@ import {
   receive_message  } from '../../actions/actions'
 import Messages from '../Messages/Messages';
 import Input from '../Input/Input';
+import store  from '../../store'
 
-class Chat extends Component {
-  componentDidMount() {
-  }
+let messages;
+class Chat extends Component { 
+
+
+    componentDidMount(){
+      console.log('component mounted')
+    }
 
 
   render () {
@@ -22,8 +28,8 @@ class Chat extends Component {
     return (
         <div className="outerContainer">
           <div className="container">
-              <h1>Jacek</h1>
-                <Messages />
+              <h1>{this.props.name}</h1>
+                <Messages messages={this.props.messages} />
                 <Input />
           </div>
         </div>
@@ -31,25 +37,22 @@ class Chat extends Component {
     }
 }
 
-Chat.propTypes = {
-  // messages: PropTypes.array.isRequired,
-  // name: PropTypes.string.isRequired,
-  // message:PropTypes.string
+// This Data is properly mapped
+function mapStateToProps (state){
+  return {
+    messages: state.messages,
+    name: state.name,
+    message: state.sendMessage,
+  }
 }
 
-const mapStateToProps = (state) => ({
-  messages: state.messages,
-  name : state.name,
-  message: state.message,
-})
-
-
+// this data is not properly mapped
 const mapDispatchToProps = dispatch => {
   return{
-    setUserName: name => { dispatch(setUserName(name))},
-    sendMessage: message =>{ dispatch(sendMessage(message))},
-    connectToWs: messages => {dispatch(connectToWS(messages))},
-    receive_message: message => {dispatch(receive_message(message))}
+    setUserName: () =>  dispatch({type: SET_NAME , payload: 'Custom Jacek'}),
+    sendMessage: message => dispatch(sendMessage(message)),
+    connectToWs: messages => dispatch(connectToWS(messages)),
+    receive_message: message =>dispatch(receive_message(message))
   
   }
 }

@@ -17,11 +17,11 @@ const Input = ({ setMessage, sendMessage, message }) => (
   </form>
 )
 
-Input.propTypes = {
-  setMessage : PropTypes.func.isRequired,
-  message : PropTypes.string,
-  sendMessage: PropTypes.func.isRequired
+// Input.propTypes = {
+//   setMessage : PropTypes.func.isRequired,
+//   message : PropTypes.string,
+//   sendMessage: PropTypes.func.isRequired
 
-}
+// }
 
 export default Input;

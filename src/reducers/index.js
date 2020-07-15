@@ -5,6 +5,7 @@ import nameReducer from './nameReducer'
 import sendMessageReducer from './sendMessageReducer'
 
 export default combineReducers({
-    messagesReducer,
-    nameReducer,
-    sendMessageReducer});
+    messages: messagesReducer,
+    name: nameReducer,
+    sendMessage: sendMessageReducer
+});
