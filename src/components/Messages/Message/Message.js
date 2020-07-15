@@ -9,9 +9,9 @@ const Message = ({message, name}) => {
   return (
           <div className="messageContainer justifyStart">
             <div className="messageBox backgroundLight">
-              <p className="messageText colorDark">{message/*ReactEmoji.emojify(message)*/}</p>
+              <p className="messageText colorDark">{ReactEmoji.emojify(message)}</p>
             </div>
-            <p className="sentText pl-10 ">{name /*name*/}</p>
+            <p className="sentText pl-10 ">{name}</p>
           </div>
       
   );

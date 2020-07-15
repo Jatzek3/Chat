@@ -8,7 +8,13 @@ import './Messages.css';
 
 const Messages = ({messages}) => (
   <ScrollToBottom className="messages">
-        {messages.map(message => <div key={message.id}><Message message={message.message} name={message.from}/></div>)}
+        {messages && messages.map(message => 
+        <div key={message.id}>
+          <Message 
+          message={message.message}
+          name={message.from}
+          />
+        </div>)}
   </ScrollToBottom>
 );
 

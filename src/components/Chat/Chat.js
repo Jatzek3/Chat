@@ -1,26 +1,34 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { FETCH_MESSAGES, SEND_MESSAGE,SET_NAME, RECEIVE_MESSAGE } from '../../actions/types'
+
 
 import './Chat.css';
 
 import { 
   connectToWS,
-  sendMessage,
   setUserName,
   receive_message  } from '../../actions/actions'
 import Messages from '../Messages/Messages';
 import Input from '../Input/Input';
-import store  from '../../store'
+import store from "../../store";
 
-let messages;
+let message;
+let value;
+
 class Chat extends Component { 
 
 
-    componentDidMount(){
-      console.log('component mounted')
-    }
+  componentDidMount(){
+    this.props.setUserName()
+  }
+
+
+  sendMessage(e) {
+    e.preventDefault()
+
+    alert(value)
+  }
 
 
   render () {
@@ -30,7 +38,7 @@ class Chat extends Component {
           <div className="container">
               <h1>{this.props.name}</h1>
                 <Messages messages={this.props.messages} />
-                <Input />
+                <Input sendMessage={this.sendMessage}/>
           </div>
         </div>
       ) 
@@ -41,7 +49,7 @@ class Chat extends Component {
 function mapStateToProps (state){
   return {
     messages: state.messages,
-    name: state.name,
+    name: state.name.name.name,
     message: state.sendMessage,
   }
 }
@@ -49,10 +57,10 @@ function mapStateToProps (state){
 // this data is not properly mapped
 const mapDispatchToProps = dispatch => {
   return{
-    setUserName: () =>  dispatch({type: SET_NAME , payload: 'Custom Jacek'}),
-    sendMessage: message => dispatch(sendMessage(message)),
-    connectToWs: messages => dispatch(connectToWS(messages)),
-    receive_message: message =>dispatch(receive_message(message))
+    setUserName: () =>  {dispatch(setUserName())},
+    // sendMessage: message => dispatch(sendMessage(message)),
+    // connectToWs: messages => dispatch(connectToWS(messages)),
+    // receive_message: message =>dispatch(receive_message(message))
   
   }
 }

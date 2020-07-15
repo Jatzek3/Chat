@@ -1,19 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 import './Input.css';
 
-const Input = ({ setMessage, sendMessage, message }) => (
+const Input = ({  sendMessage, message, value }) => (
   <form className="form">
     <input
       className="input"
       type="text"
       placeholder="Type a message..."
-      value= {console.log('messgae')} /* {message} ,-have to be handledto take input*/ 
-      onChange={ console.log('Input onChange')/*({ target: { value } }) => setMessage(value)*/}
-      onKeyPress= {event => event.key === 'Enter' ?/* sendMessage(event) */console.log('message.sent') : null}
+      value={value}
+      onChange={(event) => message = event.target.value }
+      onKeyPress= {e => e.key === 'Enter' ? sendMessage(e) : null}
     />
-    <button className="sendButton" onClick={console.log('Input send')/*e => sendMessage(e)*/}>Send</button>
+    <button className="sendButton" onClick={e => sendMessage(e)}>Send</button>
   </form>
 )
 

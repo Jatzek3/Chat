@@ -14,11 +14,10 @@ export function sendMessage(message){
         payload:message,
     }
 }
-
-export function setUserName(name){
+export const setUserName = () =>{
     return {
-        type:SET_NAME,
-        payload: name
+        type: SET_NAME ,
+        payload : { name : prompt('What is your name')} 
     }
 }
 
