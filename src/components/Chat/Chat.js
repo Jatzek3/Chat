@@ -13,10 +13,9 @@ import Messages from '../Messages/Messages';
 import Input from '../Input/Input';
 import store from "../../store";
 
-let message;
-let value;
 
-class Chat extends Component { 
+
+class Chat extends Component {
 
 
   componentDidMount(){
@@ -24,10 +23,10 @@ class Chat extends Component {
   }
 
 
-  sendMessage(e) {
+  sendMessage(e, message) {
     e.preventDefault()
-
-    alert(value)
+    //  sending message logic - dont have to be  redux
+    alert(message)
   }
 
 
@@ -58,7 +57,6 @@ function mapStateToProps (state){
 const mapDispatchToProps = dispatch => {
   return{
     setUserName: () =>  {dispatch(setUserName())},
-    // sendMessage: message => dispatch(sendMessage(message)),
     // connectToWs: messages => dispatch(connectToWS(messages)),
     // receive_message: message =>dispatch(receive_message(message))
   

@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import PropTypes from 'prop-types'
 
 import './Input.css';
 
-const Input = ({  sendMessage, message, value }) => (
+function Input({  sendMessage }) {
+  const [message, setMessage] = useState('')
+
+
+  return(
   <form className="form">
     <input
       className="input"
       type="text"
       placeholder="Type a message..."
-      value={value}
-      onChange={(event) => message = event.target.value }
-      onKeyPress= {e => e.key === 'Enter' ? sendMessage(e) : null}
+      value={message}
+      onChange={(event) => setMessage(event.target.value) }
+      onKeyPress= {e => e.key === 'Enter' ? sendMessage(e,message) : null}
     />
-    <button className="sendButton" onClick={e => sendMessage(e)}>Send</button>
+    <button className="sendButton" onClick={e => sendMessage(e, message)}>Send</button>
   </form>
-)
+  )
+}
 
 // Input.propTypes = {
 //   setMessage : PropTypes.func.isRequired,
