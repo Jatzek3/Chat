@@ -12,8 +12,8 @@
   justify-content: space-between;
   background: #FFFFFF;
   border-radius: 8px;
-  height: 60%;
-  width: 35%;
+  height: 80%;
+  width: 60%;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
@@ -27,8 +27,30 @@
   }
 }
 
-@media (min-width: 480px) and (max-width: 1200px) {
-  .container {
-    width: 60%;
-  }
+.form {
+  display: flex;
+  border-top: 2px solid #D3D3D3;
+}
+
+.input {
+  border: none;
+  border-radius: 0;
+  padding: 5%;
+  width: 80%;
+  font-size: 0.8em;
+}
+
+input:focus, textarea:focus, select:focus{
+  outline: none;
+}
+
+.sendButton {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #2979FF;
+  padding: 20px;
+  display: inline-block;
+  border: none;
+  width: 20%;
 }

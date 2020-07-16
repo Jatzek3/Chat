@@ -8,36 +8,70 @@ import './Chat.css';
 import { 
   connectToWS,
   setUserName,
-  receive_message  } from '../../actions/actions'
+  sendMessage,
+  receiveMessage  } from '../../actions/actions'
 import Messages from '../Messages/Messages';
-import Input from '../Input/Input';
-import store from "../../store";
 
+
+
+let temporaryVariable;
+
+const ENDPOINT = 'ws://chat.shas.tel';
+const socket = new WebSocket(ENDPOINT);
 
 
 class Chat extends Component {
-
-
+  constructor() {
+    super()
+    this.state = {value: ''};
+  }
   componentDidMount(){
     this.props.setUserName()
+
+
+    socket.onopen = (event) => {
+};
+  socket.onmessage = (event) => {
+    temporaryVariable = [...JSON.parse(event.data)];
+    temporaryVariable.reverse()
+    this.props.connectToWs(temporaryVariable)
+  };
+
   }
 
 
   sendMessage(e, message) {
     e.preventDefault()
-    //  sending message logic - dont have to be  redux
+    socket.send(JSON.stringify(message))
     alert(message)
+  }
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+  handleSend = (e) => {
+    e.preventDefault()
+    console.log({from: this.props.name, message: this.state.value})
+    socket.send(JSON.stringify({from: this.props.name, message: this.state.value}));
   }
 
 
   render () {
-    console.log(this.props)
     return (
         <div className="outerContainer">
           <div className="container">
-              <h1>{this.props.name}</h1>
+              <h5>{this.props.name}</h5>
                 <Messages messages={this.props.messages} />
-                <Input sendMessage={this.sendMessage}/>
+                <form className="form">
+              <input
+                className="input"
+                type="text"
+                placeholder="Type a message..."
+                value={this.state.value} 
+                onChange={e =>this.handleChange(e)}
+                onKeyPress= {e => e.key === 'Enter' ? this.handleSend : null}
+              />
+              <button className="sendButton" onClick={this.handleSend}>Send</button>
+            </form>
           </div>
         </div>
       ) 
@@ -49,7 +83,6 @@ function mapStateToProps (state){
   return {
     messages: state.messages,
     name: state.name.name.name,
-    message: state.sendMessage,
   }
 }
 
@@ -57,8 +90,9 @@ function mapStateToProps (state){
 const mapDispatchToProps = dispatch => {
   return{
     setUserName: () =>  {dispatch(setUserName())},
-    // connectToWs: messages => dispatch(connectToWS(messages)),
-    // receive_message: message =>dispatch(receive_message(message))
+    connectToWs: (messages) => {dispatch(connectToWS(messages))},
+    receiveMessage: (message) => dispatch(receiveMessage(message)),
+    modifyMessage: (message) => dispatch(sendMessage(message)),
   
   }
 }
