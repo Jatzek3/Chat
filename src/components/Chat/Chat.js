@@ -36,20 +36,23 @@ class Chat extends Component {
     this.props.setUserName()
     
 
-
-
-    // Socket managment
-    socket.onopen = (event) => {
-      store.dispatch({ type : CONNECT, payload: {connected: true}  })
-      console.log('connecting on start')
-};
-
+    
+    // Socket event Listeners
+  socket.onopen = (event) => {
+    store.dispatch({ type : CONNECT, payload: {connected: true}  })
+  };
 
   socket.onmessage = (event) => {
     this.props.connectToWs([...JSON.parse(event.data)].reverse())
   };
 
+  socket.onclose = (event) =>{
+    store.dispatch({ type : DISCONNECT, payload: {connected: false}  })
   }
+
+  }
+
+
   // Event Handlers
   handleChange(event) {
     this.setState({value: event.target.value});
@@ -63,11 +66,11 @@ class Chat extends Component {
 
   
   render () {
-    console.log(this.props.conncted)
+    console.log(this.props.connected)
     return (
         <div className="outerContainer">
           <div className="container">
-              <InfoBar name={this.props.name} />
+              <InfoBar name={this.props.name} connected={this.props.connected} />
                 <Messages messages={this.props.messages} />
                 <form className="form">
               <input
@@ -91,7 +94,7 @@ function mapStateToProps (state){
   return {
     messages: state.messages,
     name: state.name.name.name,
-    conncted: state.connection.connected
+    connected: state.connection.connected.connected
   }
 }
 

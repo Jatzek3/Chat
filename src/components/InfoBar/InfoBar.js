@@ -10,8 +10,10 @@ import { CONNECT, DISCONNECT } from '../../actions/types'
 
 const InfoBar = ({ name, connected, dispatch }) => {
 
+  console.log('connected value', connected)
   return (
-    connected
+
+    connected 
     ? (
   <div className="infoBar">
     <div className="leftInnerContainer">
@@ -19,9 +21,8 @@ const InfoBar = ({ name, connected, dispatch }) => {
 
     </div>
     <div className="rightInnerContainer">
-    <button className="disconnect button " >Disconnect</button>
-
-    <button className="connect button active "onClick={() => dispatch({ type : CONNECT, payload: {connected: true} })}>Connect</button>
+    <button className="connect button active" >Connect</button>
+    <button className="disconnect button" onClick={ () => dispatch({ type : DISCONNECT, payload: {connected : false} })}>Disconnect</button>
     </div>
   </div>
     )
@@ -32,8 +33,9 @@ const InfoBar = ({ name, connected, dispatch }) => {
   
       </div>
       <div className="rightInnerContainer">
-      <button className="connect button active" >Connect</button>
-      <button className="disconnect button " onClick={ () => dispatch({ type : DISCONNECT, payload: {connected : false} })}>Disconnect</button>
+      <button className="connect button "onClick={() => dispatch({ type : CONNECT, payload: {connected: true} })}>Connect</button>
+      <button className="disconnect button " >Disconnect</button>
+
       </div>
     </div>
 
