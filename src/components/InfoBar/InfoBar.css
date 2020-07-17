@@ -16,6 +16,10 @@
   color: white;
 }
 
+.leftInnerContainer h3{
+  cursor: pointer;
+}
+
 .rightInnerContainer {
   display: flex;
   flex: 0.5;

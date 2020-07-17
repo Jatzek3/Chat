@@ -9,7 +9,7 @@ import {
   connectToWS,
   setUserName,
  } from '../../actions/actions'
-import { CONNECT, DISCONNECT } from '../../actions/types'
+import { CONNECT, DISCONNECT, SET_NAME } from '../../actions/types'
 import Messages from '../Messages/Messages';
 import InfoBar from '../InfoBar/InfoBar';
 
@@ -47,9 +47,16 @@ class Chat extends Component {
 
 
   componentDidMount(){
-    // Initialization
-    this.props.setUserName()
-    
+    // Initialization 
+
+    if (localStorage.getItem('name')) {
+      store.dispatch({type: SET_NAME, payload: {name : localStorage.getItem('name')}})
+    }
+    else {
+      this.props.setUserName()
+    }
+
+
 
       // Socket event Listeners
     socket.onopen = (event) => {
@@ -60,11 +67,12 @@ class Chat extends Component {
       this.props.connectToWs([...JSON.parse(event.data)].reverse())
     };
 
-    socket.onclose = (event) =>{
+    socket.onclose = (event) => {
       store.dispatch({ type : DISCONNECT, payload: {connected: false}  })
     }
 
     store.subscribe(this.handleConnection)
+
   }
 
   
@@ -75,7 +83,7 @@ class Chat extends Component {
     return (
         <div className="outerContainer">
           <div className="container">
-              <InfoBar name={this.props.name} connected={this.props.connected} />
+              <InfoBar name={this.props.name} connected={this.props.connected} setUserName={this.props.setUserName} />
                 <Messages messages={this.props.messages} />
                 <form className="form">
               <input

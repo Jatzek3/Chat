@@ -4,25 +4,34 @@ import { connect } from 'react-redux'
 
 import './InfoBar.css';
 import { CONNECT, DISCONNECT } from '../../actions/types'
+// import store from '../../store';
 
 
 
 
-const InfoBar = ({ name, connected, dispatch }) => {
+const InfoBar = ({ name, connected, setUserName, dispatch }) => {
 
-  console.log('connected value', connected)
+
   return (
 
     connected 
     ? (
   <div className="infoBar">
     <div className="leftInnerContainer">
-      <h3>{name}</h3>
+      <h3 onClick={setUserName}>{name}</h3>
 
     </div>
     <div className="rightInnerContainer">
     <button className="connect button active" >Connect</button>
-    <button className="disconnect button" onClick={ () => dispatch({ type : DISCONNECT, payload: {connected : false} })}>Disconnect</button>
+    <button 
+    className="disconnect button"
+    onClick={ () => 
+    dispatch(
+      { type : DISCONNECT,
+      payload: {connected : false}
+      })}>
+    Disconnect
+    </button>
     </div>
   </div>
     )
@@ -30,12 +39,19 @@ const InfoBar = ({ name, connected, dispatch }) => {
       <div className="infoBar">
       <div className="leftInnerContainer">
         <h3>{name}</h3>
-  
       </div>
       <div className="rightInnerContainer">
-      <button className="connect button "onClick={() => dispatch({ type : CONNECT, payload: {connected: true} })}>Connect</button>
-      <button className="disconnect button active " >Disconnect</button>
 
+      <button className="connect button"
+      onClick={() => 
+      dispatch(
+        { type : CONNECT, 
+        payload: {connected: true} }
+        )}>
+      Connect
+      </button>
+
+      <button className="disconnect button active " >Disconnect</button>
       </div>
     </div>
 
