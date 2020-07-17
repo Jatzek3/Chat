@@ -34,7 +34,7 @@ const InfoBar = ({ name, connected, dispatch }) => {
       </div>
       <div className="rightInnerContainer">
       <button className="connect button "onClick={() => dispatch({ type : CONNECT, payload: {connected: true} })}>Connect</button>
-      <button className="disconnect button " >Disconnect</button>
+      <button className="disconnect button active " >Disconnect</button>
 
       </div>
     </div>

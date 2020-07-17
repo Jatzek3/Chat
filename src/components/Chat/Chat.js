@@ -9,7 +9,7 @@ import {
   connectToWS,
   setUserName,
  } from '../../actions/actions'
- import { CONNECT, DISCONNECT } from '../../actions/types'
+import { CONNECT, DISCONNECT } from '../../actions/types'
 import Messages from '../Messages/Messages';
 import InfoBar from '../InfoBar/InfoBar';
 
@@ -17,9 +17,8 @@ import store from '../../store'
 
 
 
-
 const ENDPOINT = 'ws://chat.shas.tel';
-const socket = new WebSocket(ENDPOINT);
+let socket = new WebSocket(ENDPOINT);
 
 
 class Chat extends Component {
@@ -30,43 +29,49 @@ class Chat extends Component {
     this.state = {value: ''};
   }
 
+    // Event Handlers
+    handleChange = (event) => {
+      this.setState({value: event.target.value});
+    }
+  
+    handleSend = (e) => {
+      e.preventDefault()
+      socket.send(JSON.stringify({from: this.props.name, message: this.state.value}));
+      this.setState({value: ''})
+    }
+
+    handleConnection = () => {
+      !this.props.connected?socket = new WebSocket(ENDPOINT):socket.close();
+
+    }
+
 
   componentDidMount(){
     // Initialization
     this.props.setUserName()
     
 
-    
-    // Socket event Listeners
-  socket.onopen = (event) => {
-    store.dispatch({ type : CONNECT, payload: {connected: true}  })
-  };
+      // Socket event Listeners
+    socket.onopen = (event) => {
+      store.dispatch({ type : CONNECT, payload: {connected: true}  })
+    };
 
-  socket.onmessage = (event) => {
-    this.props.connectToWs([...JSON.parse(event.data)].reverse())
-  };
+    socket.onmessage = (event) => {
+      this.props.connectToWs([...JSON.parse(event.data)].reverse())
+    };
 
-  socket.onclose = (event) =>{
-    store.dispatch({ type : DISCONNECT, payload: {connected: false}  })
-  }
+    socket.onclose = (event) =>{
+      store.dispatch({ type : DISCONNECT, payload: {connected: false}  })
+    }
 
-  }
-
-
-  // Event Handlers
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSend = (e) => {
-    e.preventDefault()
-    socket.send(JSON.stringify({from: this.props.name, message: this.state.value}));
-    this.setState({value: ''})
+    store.subscribe(this.handleConnection)
   }
 
   
+
+
+  
   render () {
-    console.log(this.props.connected)
     return (
         <div className="outerContainer">
           <div className="container">
