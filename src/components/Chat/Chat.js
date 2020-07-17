@@ -18,7 +18,7 @@ import store from '../../store'
 
 
 const ENDPOINT = 'ws://chat.shas.tel';
-let socket = new WebSocket(ENDPOINT);
+ let socket = new WebSocket(ENDPOINT);
 
 
 class Chat extends Component {
@@ -29,21 +29,7 @@ class Chat extends Component {
     this.state = {value: ''};
   }
 
-    // Event Handlers
-    handleChange = (event) => {
-      this.setState({value: event.target.value});
-    }
-  
-    handleSend = (e) => {
-      e.preventDefault()
-      socket.send(JSON.stringify({from: this.props.name, message: this.state.value}));
-      this.setState({value: ''})
-    }
 
-    handleConnection = () => {
-      !this.props.connected?socket = new WebSocket(ENDPOINT):socket.close();
-
-    }
 
 
   componentDidMount(){
@@ -55,8 +41,6 @@ class Chat extends Component {
     else {
       this.props.setUserName()
     }
-
-
 
       // Socket event Listeners
     socket.onopen = (event) => {
@@ -70,12 +54,29 @@ class Chat extends Component {
     socket.onclose = (event) => {
       store.dispatch({ type : DISCONNECT, payload: {connected: false}  })
     }
-
-    store.subscribe(this.handleConnection)
-
   }
 
+  componentDidUpdate() {
+    if (this.props.connected) {
+      return socket.close();
+    } else {
+      socket = new WebSocket(ENDPOINT);
+  }
+  }
+
+
+
+    // Event Handlers
+    handleChange = (event) => {
+      this.setState({value: event.target.value});
+    }
   
+    handleSend = (e) => {
+      e.preventDefault()
+      socket.send(JSON.stringify({from: this.props.name, message: this.state.value}));
+      this.setState({value: ''})
+    }
+
 
 
   

@@ -6,7 +6,6 @@ export default  function (state = initialState, action){
     switch(action.type){
         case SET_NAME:
             localStorage.setItem('name', action.payload.name)
-            console.log(localStorage.getItem('name'))
             return {
                 ...state,
                 name: action.payload

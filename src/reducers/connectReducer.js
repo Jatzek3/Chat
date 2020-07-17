@@ -1,6 +1,6 @@
 import { DISCONNECT, CONNECT } from '../actions/types'
 
-const initialState  = { connected: false}
+const initialState  = { connected: false }
     
 
 export default function (state = initialState, action){

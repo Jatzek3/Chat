@@ -22,7 +22,7 @@ const InfoBar = ({ name, connected, setUserName, dispatch }) => {
 
     </div>
     <div className="rightInnerContainer">
-    <button className="connect button active" >Connect</button>
+    <button className="connect button active" >Disconnect</button>
     <button 
     className="disconnect button"
     onClick={ () => 
@@ -30,7 +30,7 @@ const InfoBar = ({ name, connected, setUserName, dispatch }) => {
       { type : DISCONNECT,
       payload: {connected : false}
       })}>
-    Disconnect
+    Connect
     </button>
     </div>
   </div>
@@ -38,7 +38,7 @@ const InfoBar = ({ name, connected, setUserName, dispatch }) => {
     :(
       <div className="infoBar">
       <div className="leftInnerContainer">
-        <h3>{name}</h3>
+      <h3 onClick={setUserName}>{name}</h3>
       </div>
       <div className="rightInnerContainer">
 
@@ -48,10 +48,10 @@ const InfoBar = ({ name, connected, setUserName, dispatch }) => {
         { type : CONNECT, 
         payload: {connected: true} }
         )}>
-      Connect
+      Disconnect
       </button>
 
-      <button className="disconnect button active " >Disconnect</button>
+      <button className="disconnect button active " >Connect</button>
       </div>
     </div>
 

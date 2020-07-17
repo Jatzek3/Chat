@@ -10,7 +10,11 @@ export const connectToWS = (arrayOfMessages) => {
 export const setUserName = () =>{
     return {
         type: SET_NAME ,
-        payload : { name : prompt('What is your name', '') || 'No name' } 
+        payload : { name : 
+            prompt('What is your name', '') 
+            || localStorage.getItem('name') 
+            || "No name" 
+        } 
     }
 }
 
