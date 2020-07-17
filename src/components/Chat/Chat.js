@@ -8,13 +8,15 @@ import './Chat.css';
 import { 
   connectToWS,
   setUserName,
-  sendMessage,
-  receiveMessage  } from '../../actions/actions'
+ } from '../../actions/actions'
+ import { CONNECT, DISCONNECT } from '../../actions/types'
 import Messages from '../Messages/Messages';
+import InfoBar from '../InfoBar/InfoBar';
+
+import store from '../../store'
 
 
 
-let temporaryVariable;
 
 const ENDPOINT = 'ws://chat.shas.tel';
 const socket = new WebSocket(ENDPOINT);
@@ -23,43 +25,49 @@ const socket = new WebSocket(ENDPOINT);
 class Chat extends Component {
   constructor() {
     super()
+    // using state for form values - since messages sent messages are received and
+    // using redux for handling text input seems to be a overkill/ not optimall
     this.state = {value: ''};
   }
+
+
   componentDidMount(){
+    // Initialization
     this.props.setUserName()
+    
 
 
+
+    // Socket managment
     socket.onopen = (event) => {
+      store.dispatch({ type : CONNECT, payload: {connected: true}  })
+      console.log('connecting on start')
 };
+
+
   socket.onmessage = (event) => {
-    temporaryVariable = [...JSON.parse(event.data)];
-    temporaryVariable.reverse()
-    this.props.connectToWs(temporaryVariable)
+    this.props.connectToWs([...JSON.parse(event.data)].reverse())
   };
 
   }
-
-
-  sendMessage(e, message) {
-    e.preventDefault()
-    socket.send(JSON.stringify(message))
-    alert(message)
-  }
+  // Event Handlers
   handleChange(event) {
     this.setState({value: event.target.value});
   }
+
   handleSend = (e) => {
     e.preventDefault()
-    console.log({from: this.props.name, message: this.state.value})
     socket.send(JSON.stringify({from: this.props.name, message: this.state.value}));
+    this.setState({value: ''})
   }
 
-
+  
   render () {
+    console.log(this.props.conncted)
     return (
         <div className="outerContainer">
           <div className="container">
-              <h5>{this.props.name}</h5>
+              <InfoBar name={this.props.name} />
                 <Messages messages={this.props.messages} />
                 <form className="form">
               <input
@@ -83,6 +91,7 @@ function mapStateToProps (state){
   return {
     messages: state.messages,
     name: state.name.name.name,
+    conncted: state.connection.connected
   }
 }
 
@@ -91,8 +100,6 @@ const mapDispatchToProps = dispatch => {
   return{
     setUserName: () =>  {dispatch(setUserName())},
     connectToWs: (messages) => {dispatch(connectToWS(messages))},
-    receiveMessage: (message) => dispatch(receiveMessage(message)),
-    modifyMessage: (message) => dispatch(sendMessage(message)),
   
   }
 }
