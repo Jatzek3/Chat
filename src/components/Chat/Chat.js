@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 // import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-
+// import { toast } from 'react-toastify'
+// import 'react-toastify/dist/ReactToastify.css'
 
 import './Chat.css';
 
@@ -45,11 +46,33 @@ class Chat extends Component {
       // Socket event Listeners
     socket.onopen = (event) => {
       store.dispatch({ type : CONNECT, payload: {connected: true}  })
+      
     };
 
     socket.onmessage = (event) => {
-      this.props.connectToWs([...JSON.parse(event.data)].reverse())
-    };
+      let parsedData = [...JSON.parse(event.data)].reverse()
+      this.props.connectToWs(parsedData)
+      parsedData.reverse()
+      // let authorForNotification = parsedData[0].from;
+      let messageForNotification =  parsedData[0].message;
+      
+      if (Document.hidden) {
+        if (!('Notification' in window)){
+          alert("This browser does not support system notifications")
+        } else if (Notification.permission === 'granted'){
+          console.log('notify')
+          this.notify(messageForNotification)
+        } else if(Notification.permission !== 'denied'){
+          Notification.requestPermission(function(permission) {
+            if (permission === "granted") {
+              console.log('notifify')
+              this.notify(messageForNotification)
+            }
+          })
+        }
+      }
+    }
+
 
     socket.onclose = (event) => {
       store.dispatch({ type : DISCONNECT, payload: {connected: false}  })
@@ -57,11 +80,16 @@ class Chat extends Component {
   }
 
   componentDidUpdate() {
+    
     if (this.props.connected) {
       return socket.close();
     } else {
       socket = new WebSocket(ENDPOINT);
   }
+  }
+  notify = ( message,) => {
+    let notification = new Notification(message )
+    setTimeout(notification.close.bind(notification), 8000);
   }
 
 
