@@ -56,7 +56,6 @@ class Chat extends Component {
       // let authorForNotification = parsedData[0].from;
       let messageForNotification =  parsedData[0].message;
       
-      if (Document.hidden) {
         if (!('Notification' in window)){
           alert("This browser does not support system notifications")
         } else if (Notification.permission === 'granted'){
@@ -70,7 +69,6 @@ class Chat extends Component {
             }
           })
         }
-      }
     }
 
 

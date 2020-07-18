@@ -13,6 +13,7 @@ const Messages = ({messages}) => (
           <Message 
           message={message.message}
           name={message.from}
+          time= {new Date(message.time)}
           />
         </div>)}
   </ScrollToBottom>
