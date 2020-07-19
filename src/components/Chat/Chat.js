@@ -14,7 +14,7 @@ import store from '../../store'
 
 
 const ENDPOINT = 'ws://chat.shas.tel';
- let socket = new WebSocket(ENDPOINT);
+let socket = new WebSocket(ENDPOINT);
 
 
 class Chat extends Component {
@@ -31,68 +31,57 @@ class Chat extends Component {
   componentDidMount(){
     // Initialization 
 
+    // Set Name on start
     if (localStorage.getItem('name')) {
       store.dispatch({type: SET_NAME, payload: {name : localStorage.getItem('name')}})
-    }
-    else {
+    } else {
       this.props.setUserName()
-    }
+    };
 
       // Socket event Listeners
     socket.onopen = (event) => {
       store.dispatch({ type : CONNECT, payload: {connected: true}  })
-      
     };
+    
+    socket.onclose = (event) => {
+      store.dispatch({ type : DISCONNECT, payload: {connected: false}  })
+    };
+
 
     socket.onmessage = (event) => {
       // collect the data
       let parsedData = [...JSON.parse(event.data)].reverse()
       this.props.connectToWs(parsedData)
 
-      // On ontification
-      parsedData.reverse()
-      let authorForNotification = parsedData[0].from || 'New message';
-      let messageForNotification =  parsedData[0].message || 'Author';
+      //notification handling
+      let lastMessage = parsedData.pop()
+      this.handleNotification(lastMessage)
 
 
-      if (document.visibilityState === 'hidden') {
-
-        if (!('Notification' in window)){
-          alert("This browser does not support system notifications")
-
-        } else if (Notification.permission === 'granted') {
-          console.log('notify')
-          this.notify(messageForNotification, authorForNotification )
-
-        } else if(Notification.permission !== 'denied') {
-          Notification.requestPermission(function(permission) {
-            if (permission === "granted") {
-              console.log('notifify')
-              this.notify(messageForNotification, authorForNotification )
-            }
-          })
-        }
-      }
     }
-
-
-    socket.onclose = (event) => {
-      store.dispatch({ type : DISCONNECT, payload: {connected: false}  })
-    }
+    // In case of disconnection
+    setInterval(() => { this.checkConnection()}, 10000);
   }
 
   componentDidUpdate() {
-    // Connection and disconnection handling
+    this.checkConnection()
+  }
+
+
+  // Event Handlers and methods
+
+  checkConnection = () => {
     if (this.props.connected === false) {
       return socket.close();
     } else {
-      return socket = new WebSocket(ENDPOINT);
-  }
+        if (socket.readyState !== 1) {
+          console.log('establishing connection')
+          return socket = new WebSocket(ENDPOINT);
+        }
+    }
   }
 
-
-  
-  notify = ( message = 'New message', author) => {
+  notify = ( message = 'New message', author = 'Author') => {
     let options = {
       body: author
     }
@@ -100,18 +89,34 @@ class Chat extends Component {
     setTimeout(notification.close.bind(notification), 8000);
   }
 
+  handleNotification = (message) =>{
+    if (document.visibilityState === 'hidden') {
 
+      if (!('Notification' in window)){
+        alert("This browser does not support system notifications")
 
-    // Event Handlers
-    handleChange = (event) => {
-      this.setState({value: event.target.value});
+      } else if (Notification.permission === 'granted') {    
+        this.notify(message.message, message.from )
+
+      } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission(function(permission) {
+          if (permission === "granted") {
+            this.notify(message.message, message.from )
+          }
+        })
+      }
     }
-  
-    handleSend = (e) => {
-      e.preventDefault()
-      socket.send(JSON.stringify({from: this.props.name, message: this.state.value}));
-      this.setState({value: ''})
-    }
+  }
+
+  handleChange = (event) => {
+    this.setState({value: event.target.value});
+  }
+
+  handleSend = (e) => {
+    e.preventDefault()
+    socket.send(JSON.stringify({from: this.props.name, message: this.state.value}));
+    this.setState({value: ''})
+  }
 
 
 
@@ -120,9 +125,13 @@ class Chat extends Component {
     return (
         <div className="outerContainer">
           <div className="container">
-              <InfoBar name={this.props.name} connected={this.props.connected} setUserName={this.props.setUserName} />
+              <InfoBar 
+              name={this.props.name}
+              connected={this.props.connected}
+              setUserName={this.props.setUserName}
+              />
                 <Messages messages={this.props.messages} />
-                <form className="form">
+            <form className="form">
               <input
                 className="input"
                 type="text"
@@ -140,7 +149,7 @@ class Chat extends Component {
 }
 
 // This Data is properly mapped
-function mapStateToProps (state){
+const mapStateToProps = (state) => {
   return {
     messages: state.messages,
     name: state.name.name.name,
@@ -148,9 +157,9 @@ function mapStateToProps (state){
   }
 }
 
-// this data is properly mapped
+// This Data is properly mapped
 const mapDispatchToProps = dispatch => {
-  return{
+  return {
     setUserName: () =>  {dispatch(setUserName())},
     connectToWs: (messages) => {dispatch(connectToWS(messages))},
   

@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 import './InfoBar.css';
 import { CONNECT, DISCONNECT } from '../../actions/types'
-// import store from '../../store';
 
 
 
@@ -13,7 +12,7 @@ const InfoBar = ({ name, connected, setUserName, dispatch }) => {
 
 
   return (
-
+    //  If connected render ->
     connected 
     ? (
   <div className="infoBar">
@@ -33,6 +32,7 @@ const InfoBar = ({ name, connected, setUserName, dispatch }) => {
     </div>
   </div>
     )
+    //  If disconnected render ->
     :(
       <div className="infoBar">
       <div className="leftInnerContainer">
@@ -47,7 +47,7 @@ const InfoBar = ({ name, connected, setUserName, dispatch }) => {
       Connect
       </button>
 
-      <button className="disconnect button active " >Disconnect</button>
+      <button className="disconnect button active ">Disconnect</button>
       </div>
     </div>
 

@@ -49,10 +49,12 @@
   background-color: #3e8e41;
   transform: translateY(4px);
 }
+
 .active {
   background-color: #3e8e41;
   transform: translateY(4px);
 }
+
 .active:hover {
   cursor: default;
 }
