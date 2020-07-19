@@ -1,15 +1,10 @@
 import React, { Component } from "react";
 // import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-// import { toast } from 'react-toastify'
-// import 'react-toastify/dist/ReactToastify.css'
 
 import './Chat.css';
 
-import { 
-  connectToWS,
-  setUserName,
- } from '../../actions/actions'
+import { connectToWS,setUserName } from '../../actions/actions'
 import { CONNECT, DISCONNECT, SET_NAME } from '../../actions/types'
 import Messages from '../Messages/Messages';
 import InfoBar from '../InfoBar/InfoBar';
@@ -50,25 +45,34 @@ class Chat extends Component {
     };
 
     socket.onmessage = (event) => {
+      // collect the data
       let parsedData = [...JSON.parse(event.data)].reverse()
       this.props.connectToWs(parsedData)
+
+      // On ontification
       parsedData.reverse()
-      // let authorForNotification = parsedData[0].from;
-      let messageForNotification =  parsedData[0].message;
-      
+      let authorForNotification = parsedData[0].from || 'New message';
+      let messageForNotification =  parsedData[0].message || 'Author';
+
+
+      if (document.visibilityState === 'hidden') {
+
         if (!('Notification' in window)){
           alert("This browser does not support system notifications")
-        } else if (Notification.permission === 'granted'){
+
+        } else if (Notification.permission === 'granted') {
           console.log('notify')
-          this.notify(messageForNotification)
-        } else if(Notification.permission !== 'denied'){
+          this.notify(messageForNotification, authorForNotification )
+
+        } else if(Notification.permission !== 'denied') {
           Notification.requestPermission(function(permission) {
             if (permission === "granted") {
               console.log('notifify')
-              this.notify(messageForNotification)
+              this.notify(messageForNotification, authorForNotification )
             }
           })
         }
+      }
     }
 
 
@@ -78,15 +82,21 @@ class Chat extends Component {
   }
 
   componentDidUpdate() {
-    
-    if (this.props.connected) {
+    // Connection and disconnection handling
+    if (this.props.connected === false) {
       return socket.close();
     } else {
-      socket = new WebSocket(ENDPOINT);
+      return socket = new WebSocket(ENDPOINT);
   }
   }
-  notify = ( message,) => {
-    let notification = new Notification(message )
+
+
+  
+  notify = ( message = 'New message', author) => {
+    let options = {
+      body: author
+    }
+    let notification = new Notification(message, options )
     setTimeout(notification.close.bind(notification), 8000);
   }
 
@@ -138,7 +148,7 @@ function mapStateToProps (state){
   }
 }
 
-// this data is not properly mapped
+// this data is properly mapped
 const mapDispatchToProps = dispatch => {
   return{
     setUserName: () =>  {dispatch(setUserName())},

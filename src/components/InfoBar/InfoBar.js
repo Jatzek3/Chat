@@ -22,15 +22,13 @@ const InfoBar = ({ name, connected, setUserName, dispatch }) => {
 
     </div>
     <div className="rightInnerContainer">
-    <button className="connect button active" >Disconnect</button>
+    <button className="connect button active" >Connect</button>
     <button 
     className="disconnect button"
     onClick={ () => 
-    dispatch(
-      { type : DISCONNECT,
-      payload: {connected : false}
+    dispatch({ type : DISCONNECT, payload: {connected : false}
       })}>
-    Connect
+    Disconnect
     </button>
     </div>
   </div>
@@ -44,14 +42,12 @@ const InfoBar = ({ name, connected, setUserName, dispatch }) => {
 
       <button className="connect button"
       onClick={() => 
-      dispatch(
-        { type : CONNECT, 
-        payload: {connected: true} }
+      dispatch({ type : CONNECT, payload: {connected: true} }
         )}>
-      Disconnect
+      Connect
       </button>
 
-      <button className="disconnect button active " >Connect</button>
+      <button className="disconnect button active " >Disconnect</button>
       </div>
     </div>
 
