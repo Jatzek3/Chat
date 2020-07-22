@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import ScrollToBottom from 'react-scroll-to-bottom';
 
 
@@ -18,5 +19,9 @@ const Messages = ({messages}) => (
         </div>)}
   </ScrollToBottom>
 );
+
+Messages.propTypes ={
+  messages: PropTypes.array,
+}
 
 export default Messages;

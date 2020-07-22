@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import './Chat.css';
@@ -165,5 +165,13 @@ const mapDispatchToProps = dispatch => {
   
   }
 }
+Chat.propTypes = {
+  name : PropTypes.string,
+  messages: PropTypes.array,
+  connected: PropTypes.bool,
+  setUserName: PropTypes.func,
+  connectToWs: PropTypes.func,
+}
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);

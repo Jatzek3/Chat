@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-
+import PropTypes from 'prop-types'
 
 import './InfoBar.css';
 import { CONNECT, DISCONNECT } from '../../actions/types'
@@ -54,5 +54,11 @@ const InfoBar = ({ name, connected, setUserName, dispatch }) => {
     )
   )
 };
+
+InfoBar.propTypes ={
+  name: PropTypes.string,
+  connected: PropTypes.bool,
+  setUserName: PropTypes.func,
+}
 
 export default connect()(InfoBar);
