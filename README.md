@@ -1,68 +1,52 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Overview
 
-## Available Scripts
+    Your task is to implement a UI for a chat.
+    Design is up to you.
 
-In the project directory, you can run:
+All your code must be in the school’s private repository:
 
-### `npm start`
+    Create new branch named chat;
+    Make a Pull request from the chat branch to the master branch.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+General requirements
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+    Connection should be WS based.
+    You should use ws://st-chat.shas.tel ( or ws://chat.shas.tel) as connection url.
 
-### `npm test`
+You always will receive an array of messages from the server - when you first connect and when somebody (including you) sends a message to the server.
+Front-to-back communication
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A message that you send to the server should strictly follow protocol:
 
-### `npm run build`
+{
+  from: String,
+  message: String,
+}
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Back-to-front communication
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+You always will receive an array of messages from the server (when you first connected, and when somebody (includes you) send some message to the server.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A message that you receive from server strictly follow protocol:
 
-### `npm run eject`
+[{
+  from: String,
+  message: String,
+  id: String, // unique id of the message
+  time: Number, // time when the message has been received
+},]
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Note, that you can receive more than 1 message in Array (up to 100).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Requirements:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    React/Redux
+    Nickname should be stored in LocalStorage and reused across app launches.
+    You should implement reconnection mechanism
+    Add notifications for new messages
+    Display notification only when app is not visible
+    You should separately handle cases when the app goes online/offline
+    App should properly work in latest stable chrome
+    Your implementation of chat should be deployed and available anywhere by a public link. (My recommend hosting is heroku). Please add a link to the deployed app to the PR.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Please do not treat this as a regular task it is more like 'test task' for your interview. Apply all knowledge that you gathered during the course, use any technology you think you should, it fully ok unless you can't reason why you use it.
