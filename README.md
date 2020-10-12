@@ -1,3 +1,9 @@
+# To run Locally
+ - Downoload/clone the repository
+ - npm install dependencies
+ - npm start to run locall server
+
+
 **Overview**
  - Your task is to implement a UI for a chat.
  - Design is up to you. 
