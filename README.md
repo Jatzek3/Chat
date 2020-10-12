@@ -1,7 +1,7 @@
 # To run Locally
  - Downoload/clone the repository
- - npm install dependencies
- - npm start to run locall server
+ - "npm install" dependencies
+ - "npm start" to run locall server
 
 
 **Overview**
