@@ -1,4 +1,4 @@
-Styling of the application is based on JavaScript Mastery youTube channel video "Build and Deploy a Realtime Chat Application - Socket.io, Node.js, and React.js " 
+Styling of the application is based on JavaScript Mastery video "Build and Deploy a Realtime Chat Application - Socket.io, Node.js, and React.js " 
 
 
 
