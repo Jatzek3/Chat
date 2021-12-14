@@ -1,5 +1,3 @@
-Styling of the application is based on JavaScript Mastery video "Build and Deploy a Realtime Chat Application - Socket.io, Node.js, and React.js " 
-
  - Interesting Code -> https://github.com/Jatzek3/Chat/blob/chat/src/components/Chat/Chat.js
  - Interesting Code -> https://github.com/Jatzek3/Chat/blob/chat/src/components/InfoBar/InfoBar.js
  - Interesting Code -> https://github.com/Jatzek3/Chat/blob/chat/src/components/Messages/Messages.js
